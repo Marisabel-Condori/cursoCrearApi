@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' ) {
     switch ($obtenerURL) {
         case "persona":
             $per = TodasPersonas();
-            print_r($per);
+            print_r(json_encode($per));
             break;
         
         default:
