@@ -9,7 +9,8 @@ $conn = mysqli_connect($servidor, $user, $password, $db);
 if ($conn -> connect_error) 
     {die($conn -> connect_error);}
 else{
-echo 'conexion exitosa';}
+//echo 'conexion exitosa';
+}
 
 //guardar, modificar, eliminar
 function NonQuery($sqlstr, &$conn = null){
@@ -22,7 +23,7 @@ function NonQuery($sqlstr, &$conn = null){
 function ObtenerRegistros($sqlstr, &$conn = null){
     
     if (!$conn)global $conn;
-    echo($sqlstr);
+  //  echo($sqlstr);
     $result = $conn -> query($sqlstr);
     $vectorResult = array();
     foreach ($result as $registros) {

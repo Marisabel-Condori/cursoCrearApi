@@ -1,4 +1,5 @@
 <?php
+require_once('utilidades.php');
 
 /*require_once("db.php");
 $query = "select * from persona";
@@ -7,8 +8,18 @@ print_r($resultado);*/
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' ) {
-    $obetnerURL = $_GET['url'];
-    print($obetnerURL);
+    $obtenerURL = $_GET['url'];
+    //print($obtenerURL);
+    switch ($obtenerURL) {
+        case "persona":
+            $per = TodasPersonas();
+            print_r($per);
+            break;
+        
+        default:
+            # code...
+            break;
+    }
 
 }else if ($_SERVER['REQUEST_METHOD'] == 'POST' ){
     print('POST');
