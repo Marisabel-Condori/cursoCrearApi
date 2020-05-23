@@ -7,8 +7,9 @@ print_r($resultado);*/
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' ) {
-    print('GET');
-    http_response_code(200);
+    $obetnerURL = $_GET['url'];
+    print($obetnerURL);
+
 }else if ($_SERVER['REQUEST_METHOD'] == 'POST' ){
     print('POST');
     http_response_code(200);
