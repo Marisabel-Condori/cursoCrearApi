@@ -29,7 +29,6 @@ function ObtenerRegistros($sqlstr, &$conn = null){
     foreach ($result as $registros) {
         $vectorResult [] = $registros;
     }
-
     return $vectorResult;
 }
 

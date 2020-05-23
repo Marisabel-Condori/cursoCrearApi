@@ -2,10 +2,15 @@
 require_once('db.php');
 
 function TodasPersonas(){
-$consulta = 'select * from persona';
+$consulta = "select * from persona";
 $resp = ObtenerRegistros($consulta);
-return ConvertirUTF_8( $resp);
+return ConvertirUTF8( $resp);
+}
 
+function TodasPersonasID($id){
+    $consulta = "SELECT * FROM persona WHERE CI = $id";
+    $resp = ObtenerRegistros($consulta);
+    return ConvertirUTF8( $resp);
 }
 
 

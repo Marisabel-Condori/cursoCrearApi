@@ -9,12 +9,20 @@ print_r($resultado);*/
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' ) {
     $obtenerURL = $_GET['url'];
+    $numero=intval(preg_replace('/[^0-9]+/', '',$obtenerURL), 10);
+    print($numero);
+
     //print($obtenerURL);
     switch ($obtenerURL) {
         case "persona":
             $per = TodasPersonas();
             print_r(json_encode($per));
             break;
+
+            case "persona/$numero":
+                $per = TodasPersonasID($numero);
+                print_r(json_encode($per));
+                break;
         
         default:
             # code...
