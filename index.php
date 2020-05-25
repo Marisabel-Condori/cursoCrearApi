@@ -26,16 +26,23 @@ if (isset($_GET['url'])) {
                     http_response_code(200);
                     break;
             
-            default:;
+            default;
         }
     
     }else if ($_SERVER['REQUEST_METHOD'] == 'POST' ){
 
         $postBody = file_get_contents("php://input");
-        $convert = json_decode($postBody);
+        $convert = json_decode($postBody, true);
         if (json_last_error()==0) {
-            print_r($convert);
-            http_response_code(200);
+            switch ($obtenerURL) {
+                case "persona":
+                    CrearPersona($convert);
+                    http_response_code(200);
+                    break;
+                
+                default;
+            }
+
         } else {
             http_response_code(400);
         }

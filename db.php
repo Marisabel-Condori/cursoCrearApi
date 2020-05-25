@@ -16,7 +16,7 @@ else{
 function NonQuery($sqlstr, &$conn = null){
     if (!$conn)global $conn;
     $result = $conn -> query($sqlstr);
-    return $conn -> affect_row;
+    return $conn -> affected_rows;
 }
 
 //select
