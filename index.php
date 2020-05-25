@@ -6,36 +6,45 @@ $query = "select * from persona";
 $resultado = ObtenerRegistros($query);
 print_r($resultado);*/
 
-
-if ($_SERVER['REQUEST_METHOD'] == 'GET' ) {
+if (isset($_GET['url'])) {
     $obtenerURL = $_GET['url'];
-    $numero=intval(preg_replace('/[^0-9]+/', '',$obtenerURL), 10);
-    print($numero);
-
-    //print($obtenerURL);
-    switch ($obtenerURL) {
-        case "persona":
-            $per = TodasPersonas();
-            print_r(json_encode($per));
-            break;
-
-            case "persona/$numero":
-                $per = TodasPersonasID($numero);
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' ) {
+        $numero=intval(preg_replace('/[^0-9]+/', '',$obtenerURL), 10);
+        print($numero);
+    
+        //print($obtenerURL);
+        switch ($obtenerURL) {
+            case "persona":
+                $per = TodasPersonas();
                 print_r(json_encode($per));
+                http_response_code(200);
                 break;
-        
-        default:
-            # code...
-            break;
-    }
+    
+                case "persona/$numero":
+                    $per = TodasPersonasID($numero);
+                    print_r(json_encode($per));
+                    http_response_code(200);
+                    break;
+            
+            default:;
+        }
+    
+    }else if ($_SERVER['REQUEST_METHOD'] == 'POST' ){
 
-}else if ($_SERVER['REQUEST_METHOD'] == 'POST' ){
-    print('POST');
-    http_response_code(200);
-}else{
-    print('no hay respuesta');
-    http_response_code(400);
+        $postBody = file_get_contents("php://input");
+        print_r(json_decode($postBody));
+        print_r($postBody);
+        http_response_code(200);
+    }else{
+        print('no hay respuesta');
+        http_response_code(400);
+    }
+} else {
+    # code...
 }
+
+
+
 
 
 
